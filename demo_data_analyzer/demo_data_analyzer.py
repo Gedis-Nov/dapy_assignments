@@ -5,6 +5,7 @@ class calc_demo_data:
 
     def __init__(self):
         tab = pd.read_csv('adult.data.csv')
+
 #race_count
         self.race_count = tab['race'].value_counts()
 #average_age_men
