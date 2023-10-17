@@ -4,7 +4,11 @@ import demo_data_analyzer
 class DemographicAnalyzerTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(self):
+<<<<<<< HEAD
         self.data = demo_data_analyzer.calc_demo_data()
+=======
+        self.data = demo_data_analyzer.calc_demo_data(print_data = False)
+>>>>>>> demo_data_analyzer_v1
 
     def test_race_count(self):
         actual = self.data['race_count'].tolist()
