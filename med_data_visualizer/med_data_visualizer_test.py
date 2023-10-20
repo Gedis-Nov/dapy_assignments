@@ -1,12 +1,12 @@
 import unittest
-import medical_data_visualizer
+import med_data_visualizer
 import matplotlib as mpl
 
 
 # the test case
 class CatPlotTestCase(unittest.TestCase):
     def setUp(self):
-        self.fig = medical_data_visualizer.draw_cat_plot()
+        self.fig = med_data_visualizer.draw_cat_plot()
         self.ax = self.fig.axes[0]
 
     def test_line_plot_labels(self):
@@ -30,7 +30,7 @@ class CatPlotTestCase(unittest.TestCase):
 
 class HeatMapTestCase(unittest.TestCase):
     def setUp(self):
-        self.fig = medical_data_visualizer.draw_heat_map()
+        self.fig = med_data_visualizer.draw_heat_map()
         self.ax = self.fig.axes[0]
 
     def test_heat_map_labels(self):
