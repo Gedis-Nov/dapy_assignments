@@ -18,15 +18,10 @@ def draw_cat_plot():
     melt_tab = tab.melt(id_vars=['cardio'], value_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
 
     # Group and reformat the data to split it by 'cardio'. Show the counts of each feature. You will have to rename one of the columns for the catplot to work correctly.
-    melt_tab = melt_tab.reset_index() \
-                .groupby(['variable', 'cardio', 'value']) \
-                .agg('count') \
-                .rename(columns={'index': 'total'}) \
-                .reset_index()
+    m_tab = melt_tab.reset_index().groupby(['variable', 'cardio', 'value']).agg('count').rename(columns={'index': 'total'}).reset_index()
 
     # Draw the catplot with 'sns.catplot()'
-    ax = sns.catplot(x='variable', col='cardio',  hue='value', kind='count', data=melt_tab)
-    ax.set(ylabel='total')
+    ax = sns.catplot(x='variable', y='total', col='cardio',  hue='value', kind='bar', data=m_tab).fig
 
     # Do not modify the next two lines
     ax.savefig('catplot.png')
@@ -52,8 +47,9 @@ def draw_heat_map():
     fig = plt.figure(figsize=(12,6))
 
     # Draw the heatmap with 'sns.heatmap()'
-    sns.heatmap(corr, mask=tri_mask, annot=True, fmt='.1f', center=0, vmin=0.5, vmax=0.5)
+    bx = sns.heatmap(corr, mask=tri_mask, annot=True, fmt='.1f', center=0, vmin=0.5, vmax=0.5)
 
     # Do not modify the next two lines
+    fig = bx.figure
     fig.savefig('heatmap.png')
     return fig
